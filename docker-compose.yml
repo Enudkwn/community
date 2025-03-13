@@ -3,6 +3,8 @@ version: '3'
 services:
   mysql:
     image: 'mysql:latest'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # 初始挂载
     ports:
       - "3307:3306"
     environment:
