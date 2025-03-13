@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  mysql:
+    image: 'mysql:latest'
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=community
+      - MYSQL_USER=study
+      - MYSQL_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD=root

@@ -1,0 +1,38 @@
+
+spring:
+  application:
+    name: community
+  # 数据源
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/community
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: study
+    password: 123456
+  servlet:
+    multipart:
+      # 最大单个文件大小
+      max-file-size: 10MB
+      # 最大请求大小
+      max-request-size: 100MB
+
+
+# MyBatis
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名映射开关
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+
+
+
+
+
+
+
+
