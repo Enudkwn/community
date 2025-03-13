@@ -31,6 +31,12 @@ public class PostController {
         return Result.success(pageResult);
     }
 
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Long id){
+        log.info("删除帖子，id: {}",id);
+        postService.delete(id);
+        return Result.success();
+    }
 
 
 }
