@@ -1,5 +1,6 @@
 package com.community.controller;
 
+import com.community.pojo.ChangePasswordParam;
 import com.community.pojo.Result;
 import com.community.pojo.User;
 import com.community.service.UserService;
@@ -30,9 +31,12 @@ public class UserController {
     }
 
     @PutMapping("/password")
-    public Result updatePassword(@RequestBody User user) {
-        log.info("修改密码: " + user);
-        userService.updatePassword(user);
+    public Result updatePassword(@RequestBody ChangePasswordParam changePasswordParam) {
+        log.info("修改密码: " + changePasswordParam);
+        String info = userService.updatePassword(changePasswordParam);
+        if (info != null){
+            return Result.error(info);
+        }
         return Result.success();
     }
 }

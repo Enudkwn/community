@@ -21,7 +21,7 @@ public interface PostMapper {
     @Select("select * from posts where create_user = #{userId}")
     Post selectByUserId(Long userId);
 
-    @Select("update posts set title = #{title}, content = #{content}, update_time = #{updateTime} where create_user = #{createUser}")
+    @Select("update posts set title = #{title}, content = #{content}, update_time = #{updateTime} where post_id = #{postId}")
     void updateByUserId(Post post);
 
     @Delete("delete from posts where post_id = #{postId}")

@@ -1,7 +1,7 @@
 package com.community.service;
 
+import com.community.pojo.ChangePasswordParam;
 import com.community.pojo.LoginInfo;
-import com.community.pojo.RegisterInfo;
 import com.community.pojo.User;
 
 import java.util.Map;
@@ -16,5 +16,5 @@ public interface UserService {
 
     void updateIntro(User user);
 
-    void updatePassword(User user);
+    String updatePassword(ChangePasswordParam changePasswordParam);
 }

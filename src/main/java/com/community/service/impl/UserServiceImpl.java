@@ -1,8 +1,8 @@
 package com.community.service.impl;
 
 import com.community.mapper.UserMapper;
+import com.community.pojo.ChangePasswordParam;
 import com.community.pojo.LoginInfo;
-import com.community.pojo.RegisterInfo;
 import com.community.pojo.User;
 import com.google.common.hash.Hashing;
 import com.community.service.UserService;
@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Slf4j
 @Service
@@ -73,7 +74,28 @@ public class UserServiceImpl implements UserService {
         userMapper.updateIntro(user);
     }
 
-    public void updatePassword(User user) {
-        userMapper.updatePassword(user);
+    public String updatePassword(ChangePasswordParam changePasswordParam) {
+        User user = userMapper.selectByUserId(changePasswordParam.getUserId());
+        changePasswordParam.setOldPassword(
+                Hashing.sha256()
+                        .hashString(changePasswordParam.getOldPassword(), StandardCharsets.UTF_8)
+                        .toString()
+        );
+        log.info("用户输入旧密码：{}", changePasswordParam.getOldPassword());
+        log.info("用户旧密码：{}", user.getPassword());
+        if (!Objects.equals(user.getPassword(), changePasswordParam.getOldPassword())){
+            log.error("旧密码错误");
+            return "旧密码错误";
+        }
+        changePasswordParam.setNewPassword(
+                Hashing.sha256()
+                        .hashString(changePasswordParam.getNewPassword(), StandardCharsets.UTF_8)
+                        .toString()
+        );
+        userMapper.updatePassword(changePasswordParam);
+        log.info("用户新密码：{}", changePasswordParam.getNewPassword());
+        User user2 = userMapper.selectByUserId(changePasswordParam.getUserId());
+        log.info("用户密码：{}", user2.getPassword());
+        return null;
     }
 }

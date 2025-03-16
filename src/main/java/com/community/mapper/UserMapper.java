@@ -1,7 +1,9 @@
 package com.community.mapper;
 
+import com.community.pojo.ChangePasswordParam;
 import com.community.pojo.User;
 import org.apache.ibatis.annotations.*;
+import org.checkerframework.checker.units.qual.C;
 
 @Mapper
 public interface UserMapper {
@@ -26,6 +28,6 @@ public interface UserMapper {
     @Update("update users set intro = #{intro} where user_id = #{userId}")
     void updateIntro(User user);
 
-    @Update("update users set password = #{password} where user_id = #{userId}")
-    void updatePassword(User user);
+    @Update("update users set password = #{newPassword} where user_id = #{userId}")
+    void updatePassword(ChangePasswordParam changePasswordParam);
 }
