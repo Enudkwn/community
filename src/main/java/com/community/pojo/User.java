@@ -13,5 +13,6 @@ public class User {
     private Long userId; //ID
     private String username; //用户名
     private String password; //密码
+    private String intro;//介绍
     private LocalDateTime createTime; //创建时间
 }

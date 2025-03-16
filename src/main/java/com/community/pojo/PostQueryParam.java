@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class PostQueryParam {
+    private Long userId;
     private Integer page = 1; // 当前页码，默认值为 1
     private Integer pageSize = 10; // 每页记录数，默认值为 10
 

@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface ReplyMapper {
 
-    @Insert("insert into replies (post_id, create_user, content, create_time) values (#{postId}, #{createUser}, #{content}, #{createTime})")
+    @Insert("insert into replies (post_id, create_user,create_username, content, create_time) values (#{postId}, #{createUser},#{createUsername}, #{content}, #{createTime})")
     void insert(Reply reply);
 
     List<Reply> List(ReplyQueryParam replyQueryParam);

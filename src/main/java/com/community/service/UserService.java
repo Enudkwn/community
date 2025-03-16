@@ -11,4 +11,10 @@ public interface UserService {
     LoginInfo login(User user);
 
     Map<String, Long> register(User user);
+
+    Object selectByUserId(Long userId);
+
+    void updateIntro(User user);
+
+    void updatePassword(User user);
 }

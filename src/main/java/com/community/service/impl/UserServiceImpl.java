@@ -64,4 +64,16 @@ public class UserServiceImpl implements UserService {
         log.info("注册失败，用户已存在：{}", user);
         return null;
     }
+
+    public Object selectByUserId(Long userId) {
+        return userMapper.selectByUserId(userId);
+    }
+
+    public void updateIntro(User user) {
+        userMapper.updateIntro(user);
+    }
+
+    public void updatePassword(User user) {
+        userMapper.updatePassword(user);
+    }
 }

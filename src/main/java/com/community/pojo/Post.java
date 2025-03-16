@@ -13,6 +13,7 @@ public class Post {
     private Long PostId;
     private String title;
     private Long createUser;
+    private String createUsername;
     private String content;
     private Integer likeCount;
     private LocalDateTime createTime;

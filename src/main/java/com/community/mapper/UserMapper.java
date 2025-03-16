@@ -1,10 +1,7 @@
 package com.community.mapper;
 
 import com.community.pojo.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -19,4 +16,16 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true, keyProperty = "userId")
     @Insert("insert into users (username, password, create_time) values (#{username}, #{password}, #{createTime})")
     void insert(User user);
+
+    @Select("select user_id, username from users where user_id = #{userId}")
+    User selectUsernameByUserId(Long userId);
+
+    @Select("select * from users where user_id = #{userId}")
+    User selectByUserId(Long userId);
+
+    @Update("update users set intro = #{intro} where user_id = #{userId}")
+    void updateIntro(User user);
+
+    @Update("update users set password = #{password} where user_id = #{userId}")
+    void updatePassword(User user);
 }

@@ -8,6 +8,9 @@
     <select id="List" resultType="com.community.pojo.Post">
         select * from posts
         <where>
+            <if test="userId!=null">
+                create_user = #{userId}
+            </if>
             <if test="title!=null and title!=''">
                 title like concat('%', #{title}, '%')
             </if>

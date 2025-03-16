@@ -8,4 +8,12 @@ public interface PostService {
     void newPost(Post post);
 
     PageResult<Post> page(PostQueryParam postQueryParam);
+
+    Post get(Long postId);
+
+    PageResult<Post> getByUser(PostQueryParam postQueryParam);
+
+    void update(Post postQueryParam);
+
+    void delete(Long postId);
 }

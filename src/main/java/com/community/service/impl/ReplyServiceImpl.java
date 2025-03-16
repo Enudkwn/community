@@ -2,6 +2,7 @@ package com.community.service.impl;
 
 import com.community.context.BaseContext;
 import com.community.mapper.ReplyMapper;
+import com.community.mapper.UserMapper;
 import com.community.pojo.ReplyQueryParam;
 import com.community.pojo.PageResult;
 import com.community.pojo.Reply;
@@ -21,10 +22,13 @@ public class ReplyServiceImpl implements ReplyService {
 
     @Autowired
     private ReplyMapper replyMapper;
+    @Autowired
+    private UserMapper userMapper;
 
     public void newReply(Reply reply) {
         reply.setCreateUser(BaseContext.getCurrentId());
         reply.setCreateTime(LocalDateTime.now());
+        reply.setCreateUsername(userMapper.selectUsernameByUserId(reply.getCreateUser()).getUsername());
         log.info("新建帖子：{}", reply);
         replyMapper.insert(reply);
         log.info("帖子ID：{}", reply.getPostId());

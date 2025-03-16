@@ -24,19 +24,39 @@ public class PostController {
         return Result.success();
     }
 
-    @GetMapping
+    @GetMapping("/page")
     public Result page(PostQueryParam postQueryParam){
         log.info("分页查询，参数: {}",postQueryParam);
         PageResult<Post> pageResult = postService.page(postQueryParam);
         return Result.success(pageResult);
     }
 
-//    @DeleteMapping("/{id}")
-//    public Result delete(@PathVariable Long id){
-//        log.info("删除帖子，id: {}",id);
-//        postService.delete(id);
-//        return Result.success();
-//    }
+    @GetMapping("/{postId}")
+    public Result getByPostId(@PathVariable Long postId){
+        log.info("查询帖子，postId: {}",postId);
+        Post post = postService.get(postId);
+        return Result.success(post);
+    }
+
+    @GetMapping("/user")
+    public Result getByUserId(PostQueryParam postQueryParam){
+        log.info("查询帖子，userId: {}",postQueryParam);
+        PageResult<Post> pageResult = postService.getByUser(postQueryParam);
+        return Result.success(pageResult);
+    }
+
+    @PutMapping("/user")
+    public Result update(@RequestBody Post post){
+        log.info("更新帖子，post: {}",post);
+        postService.update(post);
+        return Result.success();
+    }
+    @DeleteMapping("/user/{postId}")
+    public Result delete(@PathVariable Long postId){
+        log.info("删除帖子，postId: {}",postId);
+        postService.delete(postId);
+        return Result.success();
+    }
 
 
 
