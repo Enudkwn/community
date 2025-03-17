@@ -1,7 +1,9 @@
 @echo off
 
-cd .\community-front\
+timeout /t 10
 
 npm install
 
 npm run dev
+
+pause

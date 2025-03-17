@@ -30,9 +30,15 @@ docker-compose down
 .\envCheckFront.bat
 ```
 
-直接在整个项目根目录运行
+直接在整个项目根目录执行以下命令
 ```shell
-.\startFront.bat
+cd .\community-front
+```
+```shell
+npm install
+```
+```shell
+npm run dev
 ```
 查询
 http://localhost:5173/
