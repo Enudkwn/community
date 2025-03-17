@@ -25,11 +25,11 @@ const router = createRouter({
           meta: { requiresAuth: true }
         },
         {path: 'index', name: 'index', component: IndexView},
-        {path: 'post', name: 'post', component: () => import('@/views/post/index.vue')},
+        // {path: 'post', name: 'post', component: () => import('@/views/post/index.vue')},
         {path: 'post/:postId', name: 'postDetail', component: () => import('@/views/post/PostDetail.vue')},
         {path: 'post/create', name: 'createPost', component: () => import('@/views/post/CreatePost.vue')},
     {path: 'post/edit/:postId', name: 'editPost', component: () => import('@/views/post/CreatePost.vue'), props: true},
-        {path: 'reply', name: 'reply', component: () => import('@/views/reply/index.vue')},
+        // {path: 'reply', name: 'reply', component: () => import('@/views/reply/index.vue')},
         {path: 'log', name: 'log', component: LogView}
       ]
     },

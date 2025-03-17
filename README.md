@@ -5,7 +5,10 @@
 ```shell
 start.bat
 ```
-
+或者
+```shell
+startDatabase.bat
+```
 ctrl + c 退出项目, 并执行一下命令以退出docker:
 ```shell
 docker-compose down
