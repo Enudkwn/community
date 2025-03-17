@@ -77,7 +77,9 @@ onMounted(() => {
     <div class="post-content">
       <h1>{{ postDetail.title }}</h1>
       <div class="meta">
-        <span>作者：{{ postDetail.createUsername }}</span>
+        <span>作者：<router-link :to="`/user/public/${postDetail.createUser || ''}`">
+          {{ postDetail.createUsername }}
+        </router-link></span>
         <span>发布时间：{{ postDetail.createTime }}</span>
       </div>
       <div class="content">{{ postDetail.content }}</div>

@@ -24,6 +24,11 @@ const router = createRouter({
           component: () => import('@/views/user/UserProfile.vue'),
           meta: { requiresAuth: true }
         },
+        {
+          path: '/user/public/:userId',
+          component: () => import('@/views/user/UserPublicProfile.vue'),
+          meta: { requiresAuth: true }
+        },
         {path: 'index', name: 'index', component: IndexView},
         // {path: 'post', name: 'post', component: () => import('@/views/post/index.vue')},
         {path: 'post/:postId', name: 'postDetail', component: () => import('@/views/post/PostDetail.vue')},
