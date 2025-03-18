@@ -10,7 +10,7 @@ const userInfo = ref({})
 const posts = ref([])
 
 const currentPage = ref(1)
-const pageSize = ref(10)
+const pageSize = ref(Number(localStorage.getItem('userPageSize')) || 10)
 const totalPosts = ref(0)
 
 const getUserInfo = async () => {
@@ -42,8 +42,10 @@ const getPosts = async () => {
   }
 }
 
-const handlePageChange = (newPage) => {
-  currentPage.value = newPage
+const handleSizeChange = (newSize) => {
+  pageSize.value = newSize
+  localStorage.setItem('userPageSize', newSize)
+  currentPage.value = 1
   getPosts()
 }
 
@@ -84,8 +86,11 @@ onMounted(() => {
         :current-page="currentPage"
         :page-size="pageSize"
         :total="totalPosts"
-        layout="total, prev, pager, next"
+        layout="prev, pager, next, sizes"
+        :page-sizes="[5, 10, 20]"
         @current-change="handlePageChange"
+        @size-change="handleSizeChange"
+        class="pagination-container"
       />
     </div>
   </div>

@@ -28,7 +28,7 @@ const getUserInfo = async () => {
 }
 
 const currentPage = ref(1)
-const pageSize = ref(10)
+const pageSize = ref(Number(localStorage.getItem('userPageSize')) || 10)
 const totalPosts = ref(0)
 
 // 获取用户文章
@@ -53,6 +53,7 @@ const handlePageChange = (newPage) => {
 
 const handleSizeChange = (newSize) => {
   pageSize.value = newSize
+  localStorage.setItem('userPageSize', newSize)
   currentPage.value = 1
   getPosts()
 }

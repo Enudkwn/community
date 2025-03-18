@@ -20,12 +20,28 @@ const loadData = async () => {
   }
 }
 
+const handleSizeChange = (newSize) => {
+  pageSize.value = newSize
+  currentPage.value = 1
+  loadData()
+  localStorage.setItem('pagination', JSON.stringify({
+    currentPage: currentPage.value,
+    pageSize: pageSize.value
+  }))
+}
+
 const handleCurrentChange = (val) => {
   currentPage.value = val
   loadData()
 }
 
 onMounted(() => {
+  const saved = localStorage.getItem('pagination')
+  if (saved) {
+    const { currentPage: savedPage, pageSize: savedSize } = JSON.parse(saved)
+    currentPage.value = savedPage
+    pageSize.value = savedSize
+  }
   loadData()
 })
 </script>
@@ -62,10 +78,7 @@ onMounted(() => {
       :total="total"
       layout="total, sizes, prev, pager, next, jumper"
       @current-change="handleCurrentChange"
-      @size-change="(val) => {
-        pageSize.value = val
-        loadData()
-      }"
+      @size-change="handleSizeChange"
     />
   </div>
 </template>
