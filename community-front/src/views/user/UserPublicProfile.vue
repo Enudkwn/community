@@ -73,7 +73,8 @@ onMounted(() => {
         class="post-item"
         @click="$router.push({ name: 'postDetail', params: { postId: post.postId } })"
       >
-        <div class="post-title">{{ post.title }}</div>
+        <h4>{{ post.title }}</h4>
+        <p class="post-excerpt">{{ post.content.substring(0, 100) }}...</p>
         <div class="post-meta">
           {{ new Date(post.createTime).toLocaleDateString() }}
         </div>
