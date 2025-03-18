@@ -15,7 +15,7 @@ mvn clean package -DskipTests
 
 进入项目根目录下执行：
 ```shell
-.\start.bat
+java -jar target/community-1.0-SNAPSHOT.jar
 ```
 
 ctrl + c 退出项目, 并执行一下命令以退出docker:
@@ -36,6 +36,9 @@ cd .\community-front
 ```
 ```shell
 npm install
+```
+```shell
+npm audit fix
 ```
 ```shell
 npm run dev

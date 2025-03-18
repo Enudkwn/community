@@ -4,7 +4,7 @@ CREATE TABLE users (
     user_id BIGINT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
     password CHAR(64) NOT NULL,
-    intro TEXT DEFAULT ('用户暂未完善个人介绍'),
+    intro TEXT,
     create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     role ENUM('user', 'moderator', 'admin') DEFAULT 'user'
 );
