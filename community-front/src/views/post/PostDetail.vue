@@ -142,6 +142,7 @@ onMounted(() => {
   margin-right: 20px;
 }
 .content {
+  white-space: pre-wrap;
   line-height: 1.6;
   font-size: 16px;
 }
@@ -166,9 +167,5 @@ onMounted(() => {
   margin-bottom: 30px;
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
-}
-.el-button {
-  margin-left: auto;
-  display: block;
 }
 </style>

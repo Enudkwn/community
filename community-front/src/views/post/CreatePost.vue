@@ -15,7 +15,10 @@ const form = ref({
 })
 
 const rules = {
-  title: [{ required: true, message: '请输入标题', trigger: 'blur' }],
+  title: [
+    { required: true, message: '请输入标题', trigger: 'blur' },
+    { max: 25, message: '标题不能超过25字', trigger: 'blur' }
+  ],
   content: [{ required: true, message: '请输入内容', trigger: 'blur' }]
 }
 
@@ -53,7 +56,7 @@ onMounted(() => {
     <el-card class="form-card">
       <el-form :model="form" :rules="rules" label-width="80px">
         <el-form-item label="标题" prop="title">
-          <el-input v-model="form.title" placeholder="请输入文章标题" />
+          <el-input v-model="form.title" placeholder="请输入文章标题" maxlength="25" show-word-limit />
         </el-form-item>
         
         <el-form-item label="内容" prop="content">
@@ -85,7 +88,4 @@ onMounted(() => {
   padding: 20px;
 }
 
-:deep(.el-form-item__content) {
-  justify-content: flex-end;
-}
 </style>
