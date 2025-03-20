@@ -168,4 +168,7 @@ onMounted(() => {
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
 }
+.comment-content {
+  white-space: pre-wrap;
+}
 </style>

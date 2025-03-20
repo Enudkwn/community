@@ -42,6 +42,11 @@ const getPosts = async () => {
   }
 }
 
+const handlePageChange = (newPage) => {
+  currentPage.value = newPage
+  getPosts()
+}
+
 const handleSizeChange = (newSize) => {
   pageSize.value = newSize
   localStorage.setItem('userPageSize', newSize)
@@ -83,8 +88,8 @@ onMounted(() => {
       </div>
 
       <el-pagination
-        :current-page="currentPage"
-        :page-size="pageSize"
+        v-model:current-page="currentPage"
+        v-model:page-size="pageSize"
         :total="totalPosts"
         layout="prev, pager, next, sizes"
         :page-sizes="[5, 10, 20]"

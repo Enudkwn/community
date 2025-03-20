@@ -76,7 +76,7 @@ const updatePassword = async () => {
           <el-input type="password" v-model="passwordForm.newPassword" placeholder="请输入新密码"></el-input>
         </el-form-item>
 
-        <el-form-item label="确认新密码" prop="confirmPassword">
+        <el-form-item label="确认密码" prop="confirmPassword">
           <el-input type="password" v-model="passwordForm.confirmPassword" placeholder="请确认新密码"></el-input>
         </el-form-item>
 
